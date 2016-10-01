@@ -17,3 +17,5 @@ An 8-Bit adder is used to add two 8-Bit words, or two bytes, of binary data. BCD
 1. Jonathan Frey – Group Lead
 2. William Nitsch – Testbench Coder
 3. Raashid Ansari – Source Coder
+
+___NOTE:___ Refer [detailed-report.md](https://github.com/raash-id/bcd-adder/blob/figures/detailed-report.md "Detailed Report") for better explanation of the project.
