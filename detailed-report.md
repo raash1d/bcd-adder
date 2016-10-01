@@ -4,7 +4,7 @@ In this experiment, an 8-bit Binary-Coded-Decimal (BCD) Adder was designed, and 
 
 Firstly, the most vital component was designed and then implemented in Verilog, the Full-Adder. The circuit representation of the Full-Adder can be seen in Figure 1.
 
-![Full-Adder Circuit](/images/figure1.tif "Full-Adder Circuit")
+![Full-Adder circuit][1]
 
 Figure 1. Full-Adder Circuit with Verilog I/O net names
 
@@ -12,7 +12,15 @@ To add two bytes of information, two 4-bit BCD adders were cascaded, where the c
 
 The 4-bit adder is designed using 4 Full Adders. Each less significant Full Adder provides the carry-in to the more significant Full Adder next to it. Although sometimes this type of adder is considered a parallel 4-bit adder, really it is a ripple adder, since the next bit doesn’t come at the same time as the previous bit, but with some tiny added delay later. The 4-bit adder can be seen in Figure 2.
 
+![4-Bit Binary adder][2]
+
+Figure 2: 4-Bit Binary adder
+
 When the 4-bit adder was designed, the 4-bit BCD adder was designed, and then cascaded with another 4-bit BCD adder. The final design can be seen in Figure 3. The Carry-out of the more significant adder will be the least significant bit of the third output nibble, which is needed for an output sum of anything over 99. To keep with BCD form, the three dummy bits of logic 0 are added to complete the third nibble.
+
+![8-Bit BCD Adder][3]
+
+Figure 3. 8-Bit BCD Adder
 
 ## Source Code Design:
 ### Submodules:
@@ -22,6 +30,8 @@ Creating these submodules gave us the flexibility of instantiating basic designs
 
 ### Hierarchy:
 It was quite obvious that a 4-bit adder would be made up using 1-bit adders, hence that hierarchy was not a problem. Similarly, a 4-bit BCD adder required two 4-bit adders with a logic to convert binary output to BCD output.  Figure 4 below shows the hierarchy that we used.
+
+![Source code hierarchy][4]
 
 Figure 4. Source code hierarchy
 
@@ -40,3 +50,23 @@ Figure 5 and 6 shows the beginning of these tests, with all inputs initially set
 Similarly for the case of the one’s place of the inputs equaling 10 (A = B = 0\*10+10 = 10), the final sum is 20. The adder outputs a hex value of 1A, which is equal to 1*10+10 = 20. The outputs of these two final tests can be observed in Figure 7. The flaw in these cases that makes them fault conditions is because they are no longer in binary coded decimal and the only way to calculate the correct answer is to mathematically work out the numbers and know to carry any value greater than 9 to the next place value. Since the user would be expecting a BCD output, the presence of alphabetical characters in an answer or input term makes it invalid.
 
 Using this many test cases is enough to prove the functionality of the adder circuit because every possible input capable of being represented with two 2-digit BCD values is tested. The special cases verify that a non-BCD output is generated when any value greater than 9 is used as an input. Running the source code and testbench provided yields no errors and consistently produces accurate outputs for the range of inputs intended by the design.
+
+![][5]
+
+Figure 5: Initial conditions for 0-99 with no carry bit
+
+![][6]
+
+Figure 6: Final values of 0-99 with carry bit set to zero and beginning of 0-99 with carry bit set to one
+
+![][7]
+
+Figure 7: Final values of 0-99 with carry bit set to one and two special input cases (0xAA and 0x0A)
+
+[1]: images/figure1.jpg?raw=true "Full-adder circuit"
+[2]: images/figure2.jpg?raw=true "Bit-binary adder"
+[3]: images/figure3.jpg?raw=true "8-bit BCD adder"
+[4]: images/figure4.jpg?raw=true "Source code hierarchy"
+[5]: images/figure5.jpg?raw=true "Initial conditions for 0-99 with no carry bit"
+[6]: images/figure6.jpg?raw=true "Final values of 0-99 with carry bit set to zero and beginning of 0-99 with carry bit set to one"
+[7]: images/figure7.jpg?raw=true "Final values of 0-99 with carry bit set to one and two special input cases (0xAA and 0x0A)"
