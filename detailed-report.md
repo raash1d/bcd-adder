@@ -4,7 +4,7 @@ In this experiment, an 8-bit Binary-Coded-Decimal (BCD) Adder was designed, and 
 
 Firstly, the most vital component was designed and then implemented in Verilog, the Full-Adder. The circuit representation of the Full-Adder can be seen in Figure 1.
 
-![Full-Adder Circuit](bcd-adder/images/figure1.tif "Full-Adder Circuit")
+![Full-Adder Circuit](https://github.com/raash-id/bcd-adder/tree/figures/images/figure1.tif "Full-Adder Circuit")
 
 Figure 1. Full-Adder Circuit with Verilog I/O net names
 
